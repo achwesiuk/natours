@@ -1,0 +1,19 @@
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1; //video znajduje się za innym elementami sekcji
+    opacity: .15;
+    overflow: hidden; // stosujemy kiedy "coś" przepełnia element - w tym wypadku video
+
+
+    &__content {
+        height: 100%;
+        width: 100%;
+        object-fit: cover; //element wypełni cały obiekt nadrzędny (rodzica), zachwując jednocześnie proporcje obrazu (aspect ratio)
+                          //część obrazu, która nie będzie pasowała do rodzica zostanie ucięta
+        backface-visibility: hidden;
+    }
+}

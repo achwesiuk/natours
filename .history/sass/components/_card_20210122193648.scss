@@ -1,0 +1,28 @@
+.card {
+    -webkit-perspective: 150rem;
+            perspective: 150rem;
+
+    &__side {
+        background-color: orangered;
+        color: #fff;
+        font-size: 2rem;
+
+        height: 50rem;
+        -webkit-transition: all .8s;
+        -o-transition: all .8s;
+        transition: all .8s;
+
+        &--front {
+            background-color: orangered;
+        }
+
+        &--back {
+            background-color: green;
+        }
+    }
+
+    &:hover &__side {
+        -webkit-transform: rotateY(180deg);
+                transform: rotateY(180deg);
+    }
+} 

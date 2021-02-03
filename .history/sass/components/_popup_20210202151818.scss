@@ -1,0 +1,10 @@
+.popup {
+    margin: 0;
+    height: 100vh;
+    background-color: $color-black;
+
+    &__content {
+        margin: 0 auto;
+        background-color: $color-white;
+    }
+}

@@ -1,0 +1,26 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    -webkit-box-shadow: 0 3rem 6rem rgba($color-black, .1);
+            box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: $color-white;
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem; //do 6rem dodaję 3 rem, które zabrałam poniżej (transform)
+    font-size: $default-font-size;
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        shape-outside: circle(50% at 50% 50%);
+
+        -webkit-clip-path: circle(50% at 50% 50%);
+                clip-path: circle(50% at 50% 50%);
+        transform:translate(-3rem);
+    }
+
+    &__img {
+        width: 100%; //zdj znajduje się wewnątrz elementu shape,który ma zdefiniowaną szerokość, zdj będzie miało 100% szerokości rodzica
+    }
+}

@@ -1,0 +1,12 @@
+.popup {
+    height: 100vh;
+    width: 100%;//nie muszę tego wpisywać
+    position: fixed;
+
+    background-color: rgb($color-black, .8);
+
+    &__content {
+        margin: 0 auto;
+        background-color: $color-white;
+    }
+}

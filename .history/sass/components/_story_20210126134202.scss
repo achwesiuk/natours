@@ -1,0 +1,48 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    -webkit-box-shadow: 0 3rem 6rem rgba($color-black, .1);
+            box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: $color-white;
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem; //do 6rem dodaję 3 rem, które zabrałam poniżej (transform)
+    font-size: $default-font-size;
+    transform: skewX(-12deg); //pochylenie pudełka
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        shape-outside: circle(50% at 50% 50%);
+        -webkit-clip-path: circle(50% at 50% 50%);
+                clip-path: circle(50% at 50% 50%);
+        transform:translateX(-3rem) skewX(12deg);
+        position: relative; //rodzic
+    }
+
+    &__img {
+        height: 100%; //zdj znajduje się wewnątrz elementu shape,który ma zdefiniowaną szerokość, zdj będzie miało 100% szerokości rodzica
+    }
+
+    &__text {
+        transform: skewX(12deg);
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);// wyśrodokowanie podpisu
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0; //stan początkowy do użycia pseudo-klasy :hover
+    }
+
+    &:hover &__caption { //kiedy najeżdzam na pudełko story pokazuje się podpis
+        opacity: 1;
+        transform: translateY(-50%); //napis podjedzie do góry (z dołu na środek)
+    }
+}

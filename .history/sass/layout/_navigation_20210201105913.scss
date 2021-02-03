@@ -1,0 +1,140 @@
+.navigation {
+
+    &__checkbox {
+        display: none;
+    }
+
+    &__button {
+        background-color: $color-white;
+        height: 7rem;
+        width: 7rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 6rem;
+        right: 6rem;
+        z-index: 2000;
+        box-shadow: 0 1rem 3rem rgba($color-black, .1);
+    }
+
+    &__background {
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 6.5rem;
+        right: 6.5rem;
+        background-image: -o-radial-gradient($color-primary-light, $color-primary-dark);
+        background-image: radial-gradient($color-primary-light, $color-primary-dark);
+        z-index: 1000;
+        -webkit-box-shadow: 0 1rem 3rem rgba($color-black, .1);
+                box-shadow: 0 1rem 3rem rgba($color-black, .1);
+        -webkit-transition: -webkit-transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+        transition: -webkit-transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+        -o-transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+        transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+        transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1), -webkit-transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+
+        //transform: scale(80);
+    }
+
+    &__nav {
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;//w tym kierunku będzie przemieszczała się nawigacja przy kliknięciu hamburgera, gdyby było ustawione left, nawigacja zawijałaby się w przeciwnym kierunku do umieszczonej nawigacji
+        z-index: 1500;
+
+        opacity: 0;
+        width: 0;
+        -webkit-transition: all .8s cubic-bezier(0.68, -.55, 0.265, 1.55);
+        -o-transition: all .8s cubic-bezier(0.68, -.55, 0.265, 1.55);
+        transition: all .8s cubic-bezier(0.68, -.55, 0.265, 1.55);
+    }
+
+    &__list {
+        @include center-hirizontal-vertical;
+
+        list-style: none;
+        text-align: center;
+        width: 100%;
+    }
+
+    &__item {
+        margin: 1rem;
+    }
+
+    &__link {
+
+        &:link,
+        &:visited {
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 300;
+            padding: 1rem 2rem;
+            color: $color-white;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-image: -o-linear-gradient(330deg, transparent 0%, transparent 50%, $color-white 50%);
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+            background-size: 226%; //u mnie dopiero 220% całkowicie przesuwa biały kolor (a nie 200%)
+            -webkit-transition: all .4s;
+            -o-transition: all .4s;
+            transition: all .4s;
+
+            span {
+                margin-right: 1rem;
+                display: inline-block;
+            }
+        }
+
+        &:hover,
+        &:active {
+            background-position: 100%;
+            color: $color-primary;
+            -webkit-transform: translateX(1rem);
+                -ms-transform: translateX(1rem);
+                    transform: translateX(1rem);
+        }
+    }
+
+    //FUNCTIONALITY
+
+    &__checkbox:checked ~ &__background {
+        -webkit-transform: scale(80);
+            -ms-transform: scale(80);
+                transform: scale(80);
+    }
+
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%;
+    }
+
+    //ICON
+
+    &__icon {
+        position: relative;
+        margin-top: 3.5rem;
+
+
+        &,
+        &::before,
+        &::after {
+            width: 3rem;
+            height: 2px;
+            background-color: $color-grey-dark-3;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+        }
+
+        &::before {top: -.8rem;}
+        &::after {top: 1rem;}
+
+    }
+}

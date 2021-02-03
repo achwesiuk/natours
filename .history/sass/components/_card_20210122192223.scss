@@ -1,0 +1,17 @@
+.card {
+    -webkit-perspective: 150rem;
+            perspective: 150rem;
+
+    &__side {
+        background-color: orangered;
+        height: 50rem;
+        -webkit-transition: all .8s;
+        -o-transition: all .8s;
+        transition: all .8s;
+    }
+
+    &:hover &__side {
+        -webkit-transform: rotateY(180deg);
+                transform: rotateY(180deg);
+    }
+}

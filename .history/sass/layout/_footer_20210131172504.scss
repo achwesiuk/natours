@@ -1,0 +1,10 @@
+.footer {
+    background-color: $color-grey-dark;
+    padding: 10rem;
+    font-size: 1.4rem;
+
+    &__logo {
+        width: 50rem;
+        height: auto;
+    }
+}

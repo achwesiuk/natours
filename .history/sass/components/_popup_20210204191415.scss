@@ -38,6 +38,7 @@
 
         @include respond (tab-port) {
             width: 100%;
+            //display: inline-block;
             margin-top: 5rem;
         }
     }

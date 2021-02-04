@@ -37,7 +37,8 @@
         display: table-cell;
 
         @include respond (tab-port) {
-            width: 100%;
+            //width: 100%;
+            display: inline-block;
             margin-top: 5rem;
         }
     }

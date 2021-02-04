@@ -28,7 +28,7 @@
         transition: all .4s .2s;
 
         @include respond(tab-port) {
-            display: block;
+            display: inline-block;
         }
     }
 
@@ -38,7 +38,7 @@
 
         @include respond (tab-port) {
             width: 100%;
-            margin-top: 5rem;
+            display: inline-block;
         }
     }
 
@@ -49,10 +49,8 @@
         padding: 3rem 5rem;
 
         @include respond (tab-port) {
-            display: block;
-            margin: 0 auto;
-            padding: 2rem 0;
-            //align-items: center;
+            display: inline-block;
+            text-align: center;
         }
     }
 
@@ -62,7 +60,6 @@
 
         @include respond (tab-port) {
             display: inline-block;
-            width: 49%;
         }
     }
 
@@ -85,10 +82,9 @@
                 hyphens: auto;
 
         @include respond(tab-port) {
-            column-count: unset;
+            column-count: 0;
             column-gap: 0;
             column-rule: none;
-            text-align: center;
         }
     }
 

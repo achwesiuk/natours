@@ -1,0 +1,220 @@
+.card {
+    //FUNCTIONALITY
+    -webkit-perspective: 150rem;
+            perspective: 150rem; //3. na rodzicu ustawiam perspetywę (na nim zachodzi transformacja).
+                                 //Wartość musi być wysoka (przy niskich przejście nie wygląda dobrze)*/
+    position: relative;
+    height: 50rem; //na rodzicu musi być ustawiona taka sama wysokośc jak na dziecku, ponieważ przez posycjonowanie dziecka, ginie wysokość rodzica
+
+    &__side {
+        height: 50rem;
+        -webkit-transition: all .8s ease;
+        -o-transition: all .8s;
+        -webkit-transition: all .8s;
+        transition: all .8s; //2. na rodzicu utawiam transition, aby animacje miała płynne przejście
+        position: absolute; //front i back sie są już ułożone jeden pod drugim, tylko jeden na drugim
+                            //przy pozycji absolute elelment jest wyjęty z normalnego położenia, dlatego też rodzic traci wysokoś
+                            //height 0 */
+        top: 0;
+        left: 0;
+        width: 100%; /*aby front i back miały taką samą szerokość*/
+        -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+        border-radius: .3rem;
+        overflow: hidden; //obraz użyty jak tło pokrywa się z elementem rodzica, dlatego też nie widać promenia w obramowaniu
+                          //na rodzicu ustawiam tę właść, teraz obraz jest przepełniony rodzicem (overwlowed)
+        -webkit-box-shadow: 0 1.5rem 2rem rgba($color-black, .15);
+                box-shadow: 0 1.5rem 2rem rgba($color-black, .15);
+
+        &--front {
+            background-color: $color-white;
+        }
+
+        &--back {
+            -webkit-transform: rotateY(-180deg);
+                    transform: rotateY(-180deg);
+
+            &-1 {
+                background-image: -o-linear-gradient(left top, $color-secondary-light, $color-secondary-dark);
+                background-image: -webkit-gradient(linear, left top, right bottom, from($color-secondary-light), to($color-secondary-dark));
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+
+            &-2 {
+                background-image: -o-linear-gradient(left top, $color-primary-light, $color-primary-dark);
+                background-image: -webkit-gradient(linear, left top, right bottom, from($color-primary-light), to($color-primary-dark));
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+
+            &-3 {
+                background-image: -o-linear-gradient(left top, $color-tertiary-light, $color-tertiary-dark);
+                background-image: -webkit-gradient(linear, left top, right bottom, from($color-tertiary-light), to($color-tertiary-dark));
+                background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+            }
+        }
+    }
+
+    &:hover &__side--front {
+        -webkit-transform: rotateY(180deg);
+                transform: rotateY(180deg); //1. element (po najechaniu na niego) obracany jest o 180deg wzgl. OY
+    }
+
+    &:hover &__side--back {
+        -webkit-transform: rotateY(0);
+                transform: rotateY(0);
+    }
+
+    //FRONT SIDE STYLINIG
+    &__picture {
+        background-size: cover;
+        height: 23rem;//nie ma żadnego contentu i zdj jest małe, dlatego należy ustawić jego wysokość, aby było większe
+        background-blend-mode: screen; //nie działa na Mozilli, IE
+                                      //właściwośc ustawiana na rodzicu
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+                clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); //właść ustawiam na rodzicu
+        // border-top-left-radius: .3rem;
+        // border-top-right-radius: .3rem;
+
+        &--1 {
+            background-image: -o-linear-gradient(left top, $color-secondary-light, $color-secondary-dark), url(../img/nat-5.jpg);
+            background-image: -webkit-gradient(linear, left top, right bottom, from($color-secondary-light), to($color-secondary-dark)), url(../img/nat-5.jpg);
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../img/nat-5.jpg);
+        }
+
+        &--2 {
+            background-image: -o-linear-gradient(left top, $color-primary-light, $color-primary-dark), url(../img/nat-6.jpg);
+            background-image: -webkit-gradient(linear, left top, right bottom, from($color-primary-light), to($color-primary-dark)), url(../img/nat-6.jpg);
+            background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), url(../img/nat-6.jpg);
+        }
+
+        &--3 {
+            background-image: -o-linear-gradient(left top, $color-tertiary-light, $color-tertiary-dark), url(../img/nat-7.jpg);
+            background-image: -webkit-gradient(linear, left top, right bottom, from($color-tertiary-light), to($color-tertiary-dark)), url(../img/nat-7.jpg);
+            background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), url(../img/nat-7.jpg);
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: $color-white;
+        position: absolute;
+        top: 12rem;
+        left: 2rem;
+        width: 75%;
+    }
+
+    &__heading-span {
+        padding: 1rem 1.5rem;
+        -webkit-box-decoration-break: clone;
+                box-decoration-break: clone; //u mnie on nic nie robi, dlaczego?
+
+        &--1 {
+            background-image: -o-linear-gradient(top left, rgba($color-secondary-light, .85), rgba($color-secondary-dark, .85));
+            background-image: -webkit-gradient(linear, left top, right bottom, from(rgba($color-secondary-light, .85)), to(rgba($color-secondary-dark, .85)));
+            background-image: linear-gradient(to bottom right, rgba($color-secondary-light, .85), rgba($color-secondary-dark, .85));
+        }
+
+        &--2 {
+            background-image: -o-linear-gradient(top left, rgba($color-primary-light, .85), rgba($color-primary-dark, .85));
+            background-image: -webkit-gradient(linear, left top, right bottom, from(rgba($color-primary-light, .85)), to(rgba($color-primary-dark, .85)));
+            background-image: linear-gradient(to bottom right, rgba($color-primary-light, .85), rgba($color-primary-dark, .85));
+        }
+
+        &--3 {
+            background-image: -o-linear-gradient(top left, rgba($color-tertiary-light, .85), rgba($color-tertiary-dark, .85));
+            background-image: -webkit-gradient(linear, left top, right bottom, from(rgba($color-tertiary-light, .85)), to(rgba($color-tertiary-dark, .85)));
+            background-image: linear-gradient(to bottom right, rgba($color-tertiary-light, .85), rgba($color-tertiary-dark, .85));
+        }
+    }
+
+    &__details {
+        padding: 3rem;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto; //centrowanie elemntu blokowego wewnątrz elementu blokowego
+        }
+
+            li {
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-grey-light-2;
+                }
+            }
+    }
+
+    //BACK SIDE STYLINIG
+    &__cta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        width: 90%; //daje szerokość, żeby button się nie łamał (tekst w nim zawarty)
+        text-align: center;
+    }
+
+    &__price-box {
+        color: $color-white;
+        margin-bottom: 8rem;
+    }
+
+    &__price-only {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+
+    &__price-value {
+        font-size: 6rem;
+        font-weight: 100;
+    }
+
+    @include respond(tab-port) {
+        height: auto;
+
+        &__side {
+            height: auto;
+            position: relative;
+            border-radius: .3rem;
+
+            &--back {
+                -webkit-transform: rotateY(0);
+                        transform: rotateY(0);
+                clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+
+            }
+        }
+
+        &:hover &__side--front {
+            -webkit-transform: rotateY(0);
+                    transform: rotateY(0);
+        }
+
+        &__cta {
+            position: relative;
+            top: 0;
+            left: 0;
+            -webkit-transform: translate(0);
+                -ms-transform: translate(0);
+                    transform: translate(0);
+            width: 100%;
+            padding: 4rem;
+        }
+    
+        &__price-box {
+            margin-bottom: 3rem;
+        }
+    
+        &__price-value {
+            font-size: 6rem;
+        }
+    }
+}

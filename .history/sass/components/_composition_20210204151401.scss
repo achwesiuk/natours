@@ -1,0 +1,55 @@
+.composition {
+    position: relative;
+
+    &__photo {
+        width: 55%;
+        -webkit-box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+                box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+        border-radius: 2px;
+        position: absolute;
+        z-index: 20;
+        -webkit-transition: all .2s;
+        -o-transition: all .2s;
+        transition: all .2s;
+        outline-offset: 2rem;
+
+        @include respond(tap-port) {
+            float: left; //zdjęcia będą umieszczone obok siebie
+            position: relative;//aby działał float potrzebna jest relatywna pozycja
+            width: 33.3333333%;
+            box-shadow: 0 1.5rem 3rem rgba($color-black, .2);
+        }
+
+        &--p1{
+            left: 0;
+            top: -2rem;
+        }
+
+        &--p2 {
+            right: 0;
+            top: 2rem;
+        }
+
+        &--p3 {
+            left: 20%;
+            top: 10rem;
+        }
+
+        &:hover {
+            outline: 1.5rem solid $color-primary;
+            -webkit-transform: scale(1.05) translateY(-.5rem);
+                -ms-transform: scale(1.05) translateY(-.5rem);
+                    transform: scale(1.05) translateY(-.5rem); /*zdj powiększa się i minimalnie przesuwa do góry*/
+            -webkit-box-shadow: 0 2.5rem 4rem rgba($color-black, .4);
+                    box-shadow: 0 2.5rem 4rem rgba($color-black, .4);
+            z-index: 40;
+        }
+
+    }
+
+    &:hover &__photo:not(:hover) {
+        -webkit-transform: scale(.95);
+            -ms-transform: scale(.95);
+                transform: scale(.95);
+    }
+}

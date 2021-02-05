@@ -709,8 +709,7 @@ body {
     -ms-transform: translateX(-3rem) skewX(12deg);
     transform: translateX(-3rem) skewX(12deg);
     position: relative;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden; }
+    overflow: hidden; }
     @media (max-width: 37.5em) {
       .story__shape {
         -webkit-transform: translateX(-3rem) skewX(0);

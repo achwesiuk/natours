@@ -35,8 +35,7 @@
             -ms-transform:translateX(-3rem) skewX(12deg);
                 transform:translateX(-3rem) skewX(12deg);
         position: relative; //rodzic
-        -webkit-backface-visibility: hidden;
-                backface-visibility: hidden;
+        overflow: hidden;
 
         @include respond(phone) {
             -webkit-transform: translateX(-3rem) skewX(0);
